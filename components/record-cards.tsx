@@ -47,7 +47,7 @@ export function RecordCard({ record }: { record: SourceRecord }) {
 
 export function SourceRecordCards({
   records,
-  description = "Seeded synthetic records, shown as stored.",
+  description = "Source records, shown as stored.",
 }: {
   records: readonly SourceRecord[];
   description?: string;

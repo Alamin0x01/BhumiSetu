@@ -163,7 +163,7 @@ export function ReviewNotes({
           id={`${baseId}-heading`}
           className="text-base font-semibold text-slate-900"
         >
-          Reviewer notes
+          Review Notes
         </h4>
         <LabelBadge label={state === null ? undefined : currentLabel} />
       </div>

@@ -1,5 +1,9 @@
 export const REPO_URL = "https://github.com/Alamin0x01/BhumiSetu";
 export const TAGLINE = "Evidence-First Land Record Review";
+export const PRODUCT_DESCRIPTION =
+  "Compare linked land records, inspect discrepancies, review supporting evidence, and manage structured review workflows.";
+export const WORKSPACE_DESCRIPTION =
+  "BhumiSetu is a modern workspace for land record review, evidence inspection, consistency analysis, and structured review workflows.";
 
 export type NavKey = "overview" | "cases" | "import" | "reports";
 
@@ -15,7 +19,7 @@ export function buildSiteNav(featuredCaseId: string): SiteNav {
   return {
     items: [
       { key: "overview", label: "Overview", href: "/" },
-      { key: "cases", label: "Demo Cases", href: "/cases" },
+      { key: "cases", label: "Case Library", href: "/cases" },
       { key: "import", label: "Import", href: "/import" },
       { key: "reports", label: "Reports", href: `/cases/${featuredCaseId}/report` },
     ],

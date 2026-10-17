@@ -82,7 +82,7 @@ export function ReportView({ report }: { report: ReviewReport }) {
                 value:
                   report.case.origin === "imported"
                     ? "Imported case (temporary browser session)"
-                    : "Built-in demo case",
+                    : "Reference case",
               },
               { label: "Source records", value: report.case.recordCount },
               { label: "Report schema version", value: report.reportSchemaVersion },

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PRODUCT_DESCRIPTION } from "@/lib/site-nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "BhumiSetu",
-  description:
-    "Compare sample land records and review inconsistencies with supporting evidence.",
+  title: "BhumiSetu | Evidence-First Land Record Review",
+  description: PRODUCT_DESCRIPTION,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

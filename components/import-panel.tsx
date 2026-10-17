@@ -81,11 +81,11 @@ export function ImportPanel() {
     state.phase === "idle"
       ? "No file selected."
       : state.phase === "selected"
-        ? "File selected. Choose \u201cValidate file\u201d to check it."
+        ? "File selected. Choose \u201cValidate Dataset\u201d to check it."
         : state.phase === "validating"
           ? "Validating the file in this browser\u2026"
           : state.phase === "valid"
-            ? "Validation passed. You can open the imported case."
+            ? "Case Workspace Ready. Open it in step 3."
             : "";
 
   return (
@@ -95,15 +95,15 @@ export function ImportPanel() {
         className={`${cardClass} flex flex-col gap-3 p-5 sm:p-6`}
       >
         <h2 id="import-sample-heading" className="text-xl font-semibold tracking-tight text-slate-900">
-          1. Get a sample file
+          1. Get a reference dataset
         </h2>
         <p className="max-w-3xl text-base leading-7 text-slate-700">
-          The sample is generated in the browser from a built-in synthetic
-          fixture, using exactly the import schema.
+          The reference dataset is generated in the browser from a built-in
+          synthetic fixture, using exactly the import schema.
         </p>
         <div>
           <button type="button" onClick={downloadSample} className={secondaryButtonClass}>
-            Download sample JSON
+            Download Reference Dataset
           </button>
         </div>
       </section>
@@ -113,11 +113,11 @@ export function ImportPanel() {
         className={`${cardClass} flex flex-col gap-4 p-5 sm:p-6`}
       >
         <h2 id="import-file-heading" className="text-xl font-semibold tracking-tight text-slate-900">
-          2. Choose and validate a file
+          2. Choose and validate a dataset
         </h2>
         <div className="flex flex-col gap-2">
           <label htmlFor="import-file" className="text-sm font-medium text-slate-900">
-            Synthetic case file (one .json file, up to {formatBytes(MAX_FILE_BYTES)})
+            Review dataset file (one .json file, up to {formatBytes(MAX_FILE_BYTES)})
           </label>
           <input
             id="import-file"
@@ -140,7 +140,7 @@ export function ImportPanel() {
             disabled={state.file === null || state.phase === "validating"}
             className={`${primaryButtonClass} ${disabledStyle}`}
           >
-            Validate file
+            Validate Dataset
           </button>
           <p role="status" className="min-h-6 text-sm font-semibold text-slate-900">
             {statusText}
@@ -173,8 +173,8 @@ export function ImportPanel() {
         {state.phase === "valid" && state.demoCase && (
           <div className="rounded-xl border border-emerald-300 border-l-4 border-l-emerald-600 bg-emerald-50 p-4 text-emerald-950">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge tone="emerald">Validation passed</Badge>
-              <span className="text-sm">Preview (text only)</span>
+              <Badge tone="emerald">Case Workspace Ready</Badge>
+              <span className="text-sm">Validation passed. Preview (text only)</span>
             </div>
             <dl className="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-[8rem_minmax(0,1fr)]">
               <dt className="font-medium">Case title</dt>
@@ -193,7 +193,7 @@ export function ImportPanel() {
         className={`${cardClass} flex flex-col gap-3 p-5 sm:p-6`}
       >
         <h2 id="import-open-heading" className="text-xl font-semibold tracking-tight text-slate-900">
-          3. Open the imported case
+          3. Open the case workspace
         </h2>
         <p id="import-open-hint" className="max-w-3xl text-base leading-7 text-slate-700">
           Available after a successful validation. The case stays in memory for
@@ -207,7 +207,7 @@ export function ImportPanel() {
             aria-describedby="import-open-hint"
             className={`${primaryButtonClass} ${disabledStyle}`}
           >
-            Open imported case
+            Open Case Workspace
           </button>
         </div>
       </section>

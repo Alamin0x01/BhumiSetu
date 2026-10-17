@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Disclaimer } from "@/components/disclaimer";
 import { ImportPanel } from "@/components/import-panel";
 import { cardClass, textLinkClass } from "@/components/ui";
 import {
@@ -13,8 +12,9 @@ import {
 } from "@/lib/import-schema";
 
 export const metadata: Metadata = {
-  title: "Import Synthetic Case | BhumiSetu",
-  description: "Validate and inspect a synthetic case file in this browser.",
+  title: "Import Review Dataset | BhumiSetu",
+  description:
+    "Validate a JSON review dataset and open it as a case workspace in this browser.",
 };
 
 export default function ImportPage() {
@@ -22,21 +22,18 @@ export default function ImportPage() {
     <div className="flex flex-1 flex-col">
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-8 sm:px-6 sm:py-12">
         <Link href="/cases" className={`${textLinkClass} w-fit text-base`}>
-          Back to demo cases
+          Back to Case Library
         </Link>
 
         <header className="max-w-3xl">
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Import synthetic case
+            Import Review Dataset
           </h1>
           <p className="mt-3 text-lg leading-8 text-slate-700">
-            Validate a small synthetic case file, inspect its records, and run
-            the same dag-reference and missing-link checks as the built-in
-            cases.
+            Validate a small JSON dataset, inspect its records, and run the same
+            dag-reference and missing-link checks as the reference cases.
           </p>
         </header>
-
-        <Disclaimer />
 
         <section
           aria-labelledby="import-safety-heading"
@@ -59,7 +56,7 @@ export default function ImportPage() {
             </li>
             <li>
               Imported cases do not use or change saved reviewer notes, and they
-              never replace the built-in demo cases.
+              never replace the reference cases.
             </li>
           </ul>
         </section>

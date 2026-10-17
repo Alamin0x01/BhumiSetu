@@ -38,9 +38,9 @@ export type DemoCase = {
 export const demoCases: readonly DemoCase[] = [
   {
     id: "DEMO-CASE-001",
-    title: "Comparable sample records",
+    title: "Comparable reference records",
     description:
-      "A seeded scenario with sample dalil, khatian, and mutation records prepared for side-by-side comparison.",
+      "A seeded scenario with dalil, khatian, and mutation records prepared for side-by-side comparison.",
     records: [
       {
         id: "DEMO-REC-001-01",
@@ -85,9 +85,9 @@ export const demoCases: readonly DemoCase[] = [
   },
   {
     id: "DEMO-CASE-002",
-    title: "Sample dag-reference difference",
+    title: "Dag-reference difference",
     description:
-      "A seeded scenario where the dag reference is written differently across the sample records.",
+      "A seeded scenario where the dag reference is written differently across the records.",
     records: [
       {
         id: "DEMO-REC-002-01",
@@ -145,9 +145,9 @@ export const demoCases: readonly DemoCase[] = [
   },
   {
     id: "DEMO-CASE-003",
-    title: "Sample missing transfer evidence",
+    title: "Missing transfer evidence",
     description:
-      "A seeded scenario where the sample set has no supporting document for one transfer step.",
+      "A seeded scenario where the record set has no supporting document for one transfer step.",
     records: [
       {
         id: "DEMO-REC-003-01",

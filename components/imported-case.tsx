@@ -64,7 +64,7 @@ export function ImportedCaseView({
 
         <header className={`${cardClass} p-6`}>
           <div className="flex flex-wrap items-center gap-3">
-            <Badge tone="slate">Imported synthetic case</Badge>
+            <Badge tone="slate">Imported Review Workspace</Badge>
             <p className="break-all font-mono text-sm text-slate-700">
               {demoCase.id}
             </p>
@@ -118,7 +118,7 @@ export function ImportedCaseView({
               <NoticeCard heading="Reviewer notes are not available here">
                 Reviewer-note editing is not available for imported cases in
                 this milestone, and imported findings never use saved reviewer
-                notes. Built-in demo cases keep their local reviewer notes
+                notes. Reference cases keep their local reviewer notes
                 unchanged.
               </NoticeCard>
             </div>
@@ -136,7 +136,7 @@ export function ImportedCaseView({
           sandbox={
             <NoticeCard heading="The what-if sandbox is not available here">
               Sandbox controls are not available for imported cases in this
-              milestone. The sandbox is unchanged on the built-in demo cases.
+              milestone. The sandbox is unchanged on the reference cases.
             </NoticeCard>
           }
         />
@@ -150,11 +150,11 @@ export function ImportedCaseEmpty({ justCleared }: { justCleared: boolean }) {
     <div className="flex flex-1 flex-col">
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-8 sm:px-6 sm:py-10">
         <Link href="/cases" className={`${textLinkClass} w-fit text-base`}>
-          Back to demo cases
+          Back to Case Library
         </Link>
         <section className={`${cardClass} flex flex-col gap-3 p-6`}>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-            Imported case
+            Imported Review Workspace
           </h1>
           <p role="status" className="min-h-6 text-base font-semibold text-emerald-900">
             {justCleared ? "Imported case cleared." : ""}
@@ -165,7 +165,7 @@ export function ImportedCaseEmpty({ justCleared }: { justCleared: boolean }) {
           </p>
           <div>
             <Link href="/import" className={primaryButtonClass}>
-              Import synthetic case
+              Import Review Dataset
             </Link>
           </div>
         </section>

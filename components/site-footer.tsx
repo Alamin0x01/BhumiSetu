@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buildSiteNav, REPO_URL, TAGLINE } from "@/lib/site-nav";
+import { buildSiteNav, REPO_URL, TAGLINE, WORKSPACE_DESCRIPTION } from "@/lib/site-nav";
 import { BrandMark } from "./brand-mark";
 import { FEATURED_CASE_ID } from "./example-preview";
 
@@ -8,13 +8,6 @@ const linkClass =
 
 const headingClass =
   "text-xs font-semibold uppercase tracking-wider text-slate-100";
-
-const scope = [
-  "Dag-reference comparison on explicitly linked records",
-  "Missing-link and document-timeline checks",
-  "Human review notes, kept in this browser",
-  "Synthetic data only: no database, OCR, or real land records",
-];
 
 function ExternalLink({ href, children }: { href: string; children: string }) {
   return (
@@ -39,11 +32,12 @@ function ExternalLink({ href, children }: { href: string; children: string }) {
 }
 
 export function SiteFooter() {
-  const { items, sandboxHref } = buildSiteNav(FEATURED_CASE_ID);
+  const { items } = buildSiteNav(FEATURED_CASE_ID);
   const overview = items.find((item) => item.key === "overview")!;
   const cases = items.find((item) => item.key === "cases")!;
   const importItem = items.find((item) => item.key === "import")!;
   const reports = items.find((item) => item.key === "reports")!;
+  const featuredCase = `/cases/${FEATURED_CASE_ID}`;
 
   return (
     <footer className="mt-auto border-t border-white/10 bg-slate-900 print:hidden">
@@ -69,11 +63,10 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-4 text-sm leading-6 text-slate-300">
-              Compare linked land records, inspect discrepancies, and document
-              human review.
+              {WORKSPACE_DESCRIPTION}
             </p>
             <span className="mt-4 inline-flex w-fit items-center rounded-full border border-slate-600 bg-slate-800 px-2.5 py-0.5 text-xs font-semibold text-slate-100">
-              Demo environment
+              Review Workspace
             </span>
           </div>
 
@@ -83,10 +76,21 @@ export function SiteFooter() {
             </h2>
             <ul className="mt-4 flex flex-col gap-2.5">
               <li><Link href={overview.href} className={linkClass}>Overview</Link></li>
-              <li><Link href={cases.href} className={linkClass}>Demo Cases</Link></li>
-              <li><Link href={sandboxHref} className={linkClass}>Interactive Sandbox</Link></li>
-              <li><Link href={importItem.href} className={linkClass}>Import Synthetic Case</Link></li>
-              <li><Link href={reports.href} className={linkClass}>Review Reports</Link></li>
+              <li><Link href={cases.href} className={linkClass}>Cases</Link></li>
+              <li><Link href={importItem.href} className={linkClass}>Import</Link></li>
+              <li><Link href={reports.href} className={linkClass}>Reports</Link></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="footer-capabilities-heading">
+            <h2 id="footer-capabilities-heading" className={headingClass}>
+              Capabilities
+            </h2>
+            <ul className="mt-4 flex flex-col gap-2.5">
+              <li><Link href={`${featuredCase}#records`} className={linkClass}>Evidence Analysis</Link></li>
+              <li><Link href={`${featuredCase}#overview`} className={linkClass}>Record Comparison</Link></li>
+              <li><Link href={`${featuredCase}#overview`} className={linkClass}>Review Workflow</Link></li>
+              <li><Link href={reports.href} className={linkClass}>Report Export</Link></li>
             </ul>
           </nav>
 
@@ -95,33 +99,20 @@ export function SiteFooter() {
               Resources
             </h2>
             <ul className="mt-4 flex flex-col gap-2.5">
-              <li><ExternalLink href={REPO_URL}>GitHub repository</ExternalLink></li>
-              <li><ExternalLink href={`${REPO_URL}#readme`}>README and import schema</ExternalLink></li>
-              <li><ExternalLink href={`${REPO_URL}/issues`}>Report an issue</ExternalLink></li>
+              <li><ExternalLink href={`${REPO_URL}#readme`}>Documentation</ExternalLink></li>
+              <li><ExternalLink href={REPO_URL}>Repository</ExternalLink></li>
             </ul>
           </nav>
-
-          <section aria-labelledby="footer-scope-heading">
-            <h2 id="footer-scope-heading" className={headingClass}>
-              Project scope
-            </h2>
-            <ul className="mt-4 flex flex-col gap-2.5">
-              {scope.map((item) => (
-                <li key={item} className="flex gap-2 text-sm leading-6 text-slate-300">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-slate-300 lg:flex-row lg:items-center lg:justify-between">
-          <p>Built for LandTech Innovation Hackathon 2026</p>
-          <p>Uses synthetic records. Not official verification or legal advice.</p>
+          <p>BhumiSetu. {TAGLINE}.</p>
+          <p>
+            Uses synthetic records. Not official verification or legal advice.{" "}
+            <Link href="/#scope" className="rounded font-medium text-emerald-300 underline underline-offset-2 hover:text-emerald-200 focus-visible:outline-emerald-300">
+              Scope &amp; Limitations
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

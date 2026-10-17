@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Disclaimer } from "@/components/disclaimer";
 import { ExamplePreview, FEATURED_CASE_ID } from "@/components/example-preview";
 import { Badge, cardClass } from "@/components/ui";
+import { demoCases } from "@/data/cases";
+import { TAGLINE } from "@/lib/site-nav";
 
 const features = [
   {
@@ -9,7 +10,7 @@ const features = [
     status: "Partial: dag reference only",
     tone: "slate",
     description:
-      "Compares dag references between records that the synthetic data explicitly links as the same parcel. No other field is compared.",
+      "Compares dag references between records that the case data explicitly links as the same parcel. No other field is compared.",
   },
   {
     title: "Missing-Link Check",
@@ -26,7 +27,7 @@ const features = [
       "Orders each case's records by their stated document date and follows explicit related-record links. Not verified ownership.",
   },
   {
-    title: "Human Review",
+    title: "Review Workflow",
     status: "Available: local notes only",
     tone: "emerald",
     description:
@@ -41,9 +42,19 @@ const features = [
   },
 ] as const;
 
+const metrics = [
+  { title: `${demoCases.length} Reference Cases`, note: "Seeded review scenarios" },
+  {
+    title: `${demoCases.reduce((total, item) => total + item.records.length, 0)} Source Records`,
+    note: "Across all reference cases",
+  },
+  { title: "JSON Import", note: "Validated in your browser" },
+  { title: "Review Reports", note: "JSON download and print view" },
+];
+
 const limitations = [
   "Only dag-reference comparison is implemented. Names, areas, dates, and parties are not compared.",
-  "Findings are record differences for human review, not verdicts. Nothing here verifies ownership, document authenticity, or legal status.",
+  "Findings are record differences for review, not verdicts. Nothing here verifies ownership, document authenticity, or legal status.",
   "Review notes stay in this browser. They are not authenticated and not a tamper-proof audit trail.",
   "Synthetic data only: no database, OCR, or real land records.",
 ];
@@ -59,30 +70,31 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center">
             <div>
               <span className="inline-flex w-fit items-center rounded-full border border-emerald-400/60 bg-emerald-400/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-200">
-                Evidence-first land record review
+                Review Workspace
               </span>
               <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
                 BhumiSetu
               </h1>
               <p className="mt-3 text-xl font-medium text-emerald-300 sm:text-2xl">
-                Land Record Consistency &amp; Review Assistant
+                {TAGLINE}
               </p>
               <p className="mt-4 max-w-xl text-lg leading-8 text-slate-200">
-                Compare linked land records, inspect discrepancies, and
-                document human review.
+                Compare linked land records, inspect discrepancies, review
+                supporting evidence, and manage structured review workflows from
+                a unified workspace.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href={`/cases/${FEATURED_CASE_ID}#sandbox`}
                   className={`${ctaBase} bg-emerald-400 text-slate-950 shadow-sm hover:bg-emerald-300`}
                 >
-                  Try interactive sandbox
+                  Try Interactive Sandbox
                 </Link>
                 <Link
                   href="/cases"
                   className={`${ctaBase} border border-slate-400 text-white hover:bg-white/10`}
                 >
-                  Browse demo cases
+                  Explore Cases
                 </Link>
               </div>
             </div>
@@ -90,14 +102,25 @@ export default function Home() {
           </div>
         </section>
 
-        <Disclaimer />
+        <section aria-label="Workspace at a glance">
+          <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {metrics.map((metric) => (
+              <li key={metric.title} className={`${cardClass} p-5`}>
+                <p className="text-xl font-bold tracking-tight text-slate-900">
+                  {metric.title}
+                </p>
+                <p className="mt-1 text-sm text-slate-700">{metric.note}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section aria-labelledby="features-heading">
           <h2
             id="features-heading"
             className="text-xl font-semibold tracking-tight text-slate-900"
           >
-            What it does today
+            Capabilities
           </h2>
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -118,6 +141,7 @@ export default function Home() {
         </section>
 
         <section
+          id="scope"
           aria-labelledby="scope-heading"
           className={`${cardClass} p-5 sm:p-6`}
         >
@@ -125,12 +149,14 @@ export default function Home() {
             id="scope-heading"
             className="text-xl font-semibold tracking-tight text-slate-900"
           >
-            Scope &amp; limitations
+            Scope &amp; Limitations
           </h2>
+          <p className="mt-2 max-w-3xl text-base font-medium leading-7 text-slate-900">
+            Uses synthetic records. Not official verification or legal advice.
+          </p>
           <p className="mt-2 max-w-3xl text-base leading-7 text-slate-700">
-            In scope: dag-reference comparison between records the synthetic data
-            explicitly links as the same parcel, shown with evidence for human
-            review.
+            In scope: dag-reference comparison between records the case data
+            explicitly links as the same parcel, shown with evidence for review.
           </p>
           <ul className="mt-3 grid gap-x-8 gap-y-2 text-base leading-7 text-slate-700 md:grid-cols-2">
             {limitations.map((item) => (

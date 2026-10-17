@@ -48,15 +48,15 @@ export default async function CaseDetailPage({
     <div className="flex flex-1 flex-col">
       <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-8 sm:px-6 sm:py-10">
         <Link href="/cases" className={`${textLinkClass} w-fit text-base`}>
-          Back to demo cases
+          Back to Case Library
         </Link>
 
         <header className={`${cardClass} p-6`}>
           <div className="flex flex-wrap items-center gap-3">
-            <Badge tone="emerald">Synthetic demo</Badge>
+            <Badge tone="emerald">Reference Case</Badge>
             <p className="font-mono text-sm text-slate-700">{demoCase.id}</p>
             <p className="text-sm text-slate-700">
-              {demoCase.records.length} synthetic documents
+              {demoCase.records.length} source records
             </p>
           </div>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">

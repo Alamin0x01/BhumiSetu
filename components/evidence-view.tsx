@@ -142,7 +142,7 @@ export function EvidenceCompleteness({
           <Badge tone="amber">Evidence incomplete</Badge>
           <p className="mt-3 max-w-3xl text-base leading-7">
             A related record ID is referenced but is not included in this
-            synthetic case. This is a data-completeness check only, not a
+            case. This is a data-completeness check only, not a
             finding of fraud or invalid ownership.
           </p>
           <ul className="mt-3 list-disc space-y-1 pl-5 text-base">
@@ -210,7 +210,7 @@ export function EvidenceTimeline({
         id="timeline-heading"
         description="Records ordered by the document date each one states. Links follow explicit related-record IDs only. This is not verified ownership: no dates, transfers, or missing events are inferred."
       >
-        Document evidence timeline
+        <span className="capitalize">Document evidence timeline</span>
       </SectionHeading>
       <ol className="ml-3 mt-6 flex flex-col gap-4 border-l-2 border-slate-300 pl-6">
         {dated.map((record, index) => (

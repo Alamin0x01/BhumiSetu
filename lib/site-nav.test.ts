@@ -6,7 +6,7 @@ describe("buildSiteNav", () => {
     const nav = buildSiteNav("DEMO-CASE-002");
     expect(nav.items.map((item) => [item.label, item.href])).toEqual([
       ["Overview", "/"],
-      ["Demo Cases", "/cases"],
+      ["Case Library", "/cases"],
       ["Import", "/import"],
       ["Reports", "/cases/DEMO-CASE-002/report"],
     ]);

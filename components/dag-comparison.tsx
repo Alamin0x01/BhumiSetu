@@ -17,6 +17,8 @@ export const skipReasonLabels: Record<SkipReason, string> = {
 };
 
 const subheadingClass = "text-lg font-semibold text-slate-900";
+const eyebrowClass =
+  "text-xs font-semibold uppercase tracking-wider text-slate-600";
 
 function QuotedValue({ value }: { value: string }) {
   return (
@@ -97,6 +99,7 @@ export function DagComparison({
                 className={`grid gap-6 p-5 lg:p-6 ${showReviewNotes ? "lg:grid-cols-2" : ""}`}
               >
                 <div className="flex min-w-0 flex-col gap-4">
+                  <p className={eyebrowClass}>Finding Summary</p>
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge tone="amber">Record difference: review needed</Badge>
                     <span className="font-mono text-sm text-slate-700">
@@ -110,13 +113,15 @@ export function DagComparison({
                   <p className="break-all font-mono text-xs text-slate-700">
                     Finding ID: {finding.id}
                   </p>
+                  <p className="text-base leading-7 text-slate-900">
+                    {finding.explanation}
+                  </p>
+                  <p className={eyebrowClass}>Evidence References</p>
                   <dl className="grid gap-3 sm:grid-cols-2">
                     <EvidenceValue value={finding.values[0]} />
                     <EvidenceValue value={finding.values[1]} />
                   </dl>
-                  <p className="text-base leading-7 text-slate-900">
-                    {finding.explanation}
-                  </p>
+                  <p className={eyebrowClass}>Comparison Context</p>
                   <div>
                     <p className="text-sm font-semibold text-slate-900">
                       Comparability assumptions
@@ -167,12 +172,11 @@ export function LocalNotesNotice() {
   return (
     <section aria-labelledby="local-notes-heading" className={`${cardClass} p-5`}>
       <h2 id="local-notes-heading" className={subheadingClass}>
-        Human review notes: local to this browser
+        Review Notes: local to this browser
       </h2>
       <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-700">
-        Reviewer notes are saved only in this browser&apos;s localStorage for
-        this demo. They are not authenticated, not shared, and not a
-        tamper-proof audit trail.
+        Review notes are saved only in this browser&apos;s localStorage. They are
+        not authenticated, not shared, and not a tamper-proof audit trail.
       </p>
       <div className="mt-3">
         <ResetReviewNotes />

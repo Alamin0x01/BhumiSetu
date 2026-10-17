@@ -18,7 +18,7 @@ export function CaseSummary({
     {
       label: "Source records",
       value: records.length,
-      note: "Synthetic documents in this case",
+      note: "Documents in this case",
       attention: false,
     },
     {
