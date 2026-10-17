@@ -141,13 +141,6 @@ export default function Home() {
           </ul>
         </section>
       </main>
-
-      <footer className="border-t border-slate-200 bg-white">
-        <p className="mx-auto w-full max-w-6xl px-4 py-6 text-sm text-slate-700 sm:px-6">
-          BhumiSetu demo environment. Findings are record differences for human
-          review.
-        </p>
-      </footer>
     </div>
   );
 }

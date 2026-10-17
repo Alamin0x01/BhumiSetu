@@ -21,6 +21,10 @@ body {
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+
   :where(a, button, input, textarea, select, [tabindex]):focus-visible {
     outline: 2px solid #047857;
     outline-offset: 2px;
